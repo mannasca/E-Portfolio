@@ -214,9 +214,9 @@ export default function Portfolio() {
           <p className="text-3xl text-gray-400 mb-4">
             <Typewriter
               words={[
-                'Software Developer | Full-Stack & AI',
-                'Full-Stack Web Developer',
-                'Software Tester',
+                'Software Developer | Full-Stack',
+                'Applied AI Developer',
+                'Software Quality Engineer',
               ]}
               loop
               cursor
