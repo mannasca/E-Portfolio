@@ -12,6 +12,7 @@ import {
   ChevronDown,
   User,
   Briefcase,
+  Code,
 } from 'lucide-react';
 
 // ✅ Disable SSR for Typewriter (CRITICAL FIX)
@@ -81,6 +82,54 @@ export default function Portfolio() {
       label: 'LinkedIn',
     },
     { href: 'mailto:anassattar.rg@gmail.com', icon: Mail, label: 'Email' },
+  ];
+
+  const skills = {
+    languages: [
+      'Python',
+      'JavaScript',
+      'SQL',
+      'Java',
+      'C#',
+      'HTML/CSS',
+    ],
+    frameworks: [
+      'React',
+      'Node.js',
+      'Express',
+      'Next.js',
+      'MongoDB',
+      'PostgreSQL',
+    ],
+    tools: [
+      'Git',
+      'GitHub',
+      'Docker',
+      'VS Code',
+      'REST APIs',
+      'Agile/Scrum',
+    ],
+  };
+
+  const skillCategories = [
+    {
+      title: 'Programming Languages',
+      category: 'Core Languages',
+      description: 'Languages I use for building scalable applications and solving complex problems.',
+      skills: skills.languages,
+    },
+    {
+      title: 'Frameworks & Libraries',
+      category: 'Development Tools',
+      description: 'Modern frameworks and libraries for full-stack web development and data management.',
+      skills: skills.frameworks,
+    },
+    {
+      title: 'Tools & Platforms',
+      category: 'DevOps & Productivity',
+      description: 'Development tools, version control, containerization, and collaboration platforms.',
+      skills: skills.tools,
+    },
   ];
 
   const projects = [
@@ -159,7 +208,7 @@ export default function Portfolio() {
         }`}
       >
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-end gap-8">
-          {['home', 'about', 'projects', 'contact'].map((item) => (
+          {['home', 'about', 'skills', 'projects', 'contact'].map((item) => (
             <a
               key={item}
               href={`#${item}`}
@@ -257,7 +306,41 @@ export default function Portfolio() {
           </p>
         </div>
       </section>
+      {/* Skills */}
+      <section id="skills" className="min-h-screen flex items-center px-6 py-20">
+        <div className="max-w-5xl mx-auto w-full">
+          <h2 className="text-5xl font-bold mb-12 flex items-center gap-4">
+            <Code className="w-10 h-10" />
+            Skills
+          </h2>
 
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {skillCategories.map((category, idx) => (
+              <div
+                key={idx}
+                className="group bg-gray-950 border border-gray-900 rounded-xl p-6 hover:border-gray-700 hover:bg-gray-900 transition-all"
+              >
+                <h3 className="text-2xl font-bold mb-2">{category.title}</h3>
+                <p className="text-sm text-gray-500 mb-3 capitalize">
+                  {category.category}
+                </p>
+                <p className="text-gray-300 mb-4 text-sm">{category.description}</p>
+
+                <div className="mb-4 flex flex-wrap gap-2">
+                  {category.skills.map((skill, i) => (
+                    <span
+                      key={i}
+                      className="text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
       {/* Projects */}
       <section id="projects" className="min-h-screen flex items-center px-6 py-20">
         <div className="max-w-5xl mx-auto w-full">
