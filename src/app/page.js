@@ -84,51 +84,24 @@ export default function Portfolio() {
     { href: 'mailto:anassattar.rg@gmail.com', icon: Mail, label: 'Email' },
   ];
 
-  const skills = {
-    languages: [
-      'Python',
-      'JavaScript',
-      'SQL',
-      'Java',
-      'C#',
-      'HTML/CSS',
-    ],
-    frameworks: [
-      'React',
-      'Node.js',
-      'Express',
-      'Next.js',
-      'MongoDB',
-      'PostgreSQL',
-    ],
-    tools: [
-      'Git',
-      'GitHub',
-      'Docker',
-      'VS Code',
-      'REST APIs',
-      'Agile/Scrum',
-    ],
-  };
-
-  const skillCategories = [
+  const skills = [
     {
       title: 'Programming Languages',
-      category: 'Core Languages',
+      subtitle: 'Core Languages',
       description: 'Languages I use for building scalable applications and solving complex problems.',
-      skills: skills.languages,
+      items: ['Python', 'JavaScript', 'SQL', 'Java', 'C#', 'HTML/CSS'],
     },
     {
       title: 'Frameworks & Libraries',
-      category: 'Development Tools',
+      subtitle: 'Development Tools',
       description: 'Modern frameworks and libraries for full-stack web development and data management.',
-      skills: skills.frameworks,
+      items: ['React', 'Node.js', 'Express', 'Next.js', 'MongoDB', 'PostgreSQL'],
     },
     {
       title: 'Tools & Platforms',
-      category: 'DevOps & Productivity',
+      subtitle: 'DevOps & Productivity',
       description: 'Development tools, version control, containerization, and collaboration platforms.',
-      skills: skills.tools,
+      items: ['Git', 'GitHub', 'Docker', 'VS Code', 'REST APIs', 'Agile/Scrum'],
     },
   ];
 
@@ -207,12 +180,14 @@ export default function Portfolio() {
             : ''
         }`}
       >
-        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-end gap-8">
-          {['home', 'about', 'skills', 'projects', 'contact'].map((item) => (
-            <a
-              key={item}
-              href={`#${item}`}
-              className={`relative capitalize transition-colors ${
+        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+          <img src="/ma_logo.svg" alt="Logo" className="h-10 w-auto" />
+          <div className="flex gap-8">
+            {['home', 'about', 'skills', 'projects', 'contact'].map((item) => (
+              <a
+                key={item}
+                href={`#${item}`}
+                className={`relative capitalize transition-colors ${
                 activeSection === item
                   ? 'text-white'
                   : 'text-gray-400 hover:text-white'
@@ -224,6 +199,7 @@ export default function Portfolio() {
               )}
             </a>
           ))}
+          </div>
         </div>
       </nav>
 
@@ -288,24 +264,28 @@ export default function Portfolio() {
 
       {/* About */}
       <section id="about" className="min-h-screen flex items-center px-6 py-20">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto">
           <h2 className="text-5xl font-bold mb-12 flex items-center justify-center gap-4">
             <User className="w-10 h-10" />
             About Me
           </h2>
 
-          <p className="text-lg text-gray-300 mb-6">
-            I’m a Software Engineering Technology (AI) student focused on building
-            modern, scalable web applications and intelligent software solutions.
-          </p>
+          <div className="space-y-6">
+            <p className="text-lg text-gray-300 leading-relaxed">
+              I focus on designing and building modern, scalable web applications and intelligent software solutions that prioritize reliability, performance, and maintainability. My work blends strong software engineering fundamentals with applied AI concepts to solve real-world problems through practical, production-oriented code.
+            </p>
 
-          <p className="text-lg text-gray-300 mb-10">
-            Strong foundation in Python, JavaScript, SQL, REST APIs, and
-            full-stack development with an emphasis on clean code and real-world
-            problem solving.
-          </p>
+            <p className="text-lg text-gray-300 leading-relaxed">
+              I have a solid technical foundation in Python, JavaScript, SQL, and RESTful APIs, with hands-on experience across the full stack, from backend logic and data handling to responsive, user-focused interfaces. I place a strong emphasis on clean architecture, readable code, and systems that can scale beyond prototypes into real deployments.
+            </p>
+
+            <p className="text-lg text-gray-300 leading-relaxed">
+              I'm particularly interested in turning complex requirements into efficient, well-structured solutions, continuously refining my approach through learning, experimentation, and building.
+            </p>
+          </div>
         </div>
       </section>
+
       {/* Skills */}
       <section id="skills" className="min-h-screen flex items-center px-6 py-20">
         <div className="max-w-5xl mx-auto w-full">
@@ -315,19 +295,16 @@ export default function Portfolio() {
           </h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {skillCategories.map((category, idx) => (
+            {skills.map((category, idx) => (
               <div
                 key={idx}
                 className="group bg-gray-950 border border-gray-900 rounded-xl p-6 hover:border-gray-700 hover:bg-gray-900 transition-all"
               >
                 <h3 className="text-2xl font-bold mb-2">{category.title}</h3>
-                <p className="text-sm text-gray-500 mb-3 capitalize">
-                  {category.category}
-                </p>
+                <p className="text-sm text-gray-500 mb-3">{category.subtitle}</p>
                 <p className="text-gray-300 mb-4 text-sm">{category.description}</p>
-
-                <div className="mb-4 flex flex-wrap gap-2">
-                  {category.skills.map((skill, i) => (
+                <div className="flex flex-wrap gap-2">
+                  {category.items.map((skill, i) => (
                     <span
                       key={i}
                       className="text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded"
@@ -341,6 +318,7 @@ export default function Portfolio() {
           </div>
         </div>
       </section>
+
       {/* Projects */}
       <section id="projects" className="min-h-screen flex items-center px-6 py-20">
         <div className="max-w-5xl mx-auto w-full">
