@@ -216,7 +216,7 @@ export default function Portfolio() {
               words={[
                 'Software Developer | Full-Stack & AI',
                 'Full-Stack Web Developer',
-                'Software Engineering Student (AI)',
+                'Software Tester',
               ]}
               loop
               cursor
